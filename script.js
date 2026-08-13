@@ -440,26 +440,129 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MUSIC PLAYER
-    ===================================================== */
+   MUSIC PLAYLIST
+===================================================== */
 
-    const audio =
-        document.getElementById("musicAudio");
+const playlist = [
+    {
+        title: "Surat Cinta Untuk Starla",
+        artist: "Musik Grup 🎵",
+        src: "assets/surat-cinta-untuk-starla.mp3"
+    },
+    {
+        title: "L Halstage",
+        artist: "Musik Grup 🎵",
+        src: "assets/l-halstage.mp3"
+    }
+];
 
-    const playButton =
-        document.getElementById("playMusic");
+let currentSong = 0;
 
-    const progress =
-        document.getElementById("musicProgress");
+function loadSong(index, autoplay = false) {
 
-    const volume =
-        document.getElementById("volumeControl");
+    if (!audio) return;
 
-    const currentTime =
-        document.getElementById("currentTime");
+    currentSong = index;
 
-    const duration =
-        document.getElementById("duration");
+    const song = playlist[currentSong];
+
+    audio.src = song.src;
+
+    const title =
+        document.querySelector(".music-title");
+
+    const artist =
+        document.querySelector(".music-artist");
+
+    if (title) {
+        title.textContent = song.title;
+    }
+
+    if (artist) {
+        artist.textContent = song.artist;
+    }
+
+    audio.load();
+
+    if (progress) {
+        progress.value = 0;
+    }
+
+    if (currentTime) {
+        currentTime.textContent = "0:00";
+    }
+
+    if (duration) {
+        duration.textContent = "0:00";
+    }
+
+    if (autoplay) {
+
+        audio.play().then(() => {
+
+            if (playButton) {
+                playButton.innerHTML =
+                    '<i class="fas fa-pause"></i>';
+            }
+
+        }).catch(() => {});
+
+    }
+}
+
+
+/* NEXT */
+
+if (nextMusic) {
+
+    nextMusic.addEventListener("click", () => {
+
+        currentSong =
+            (currentSong + 1) % playlist.length;
+
+        loadSong(currentSong, true);
+
+    });
+
+}
+
+
+/* PREVIOUS */
+
+if (prevMusic) {
+
+    prevMusic.addEventListener("click", () => {
+
+        currentSong =
+            (currentSong - 1 + playlist.length)
+            % playlist.length;
+
+        loadSong(currentSong, true);
+
+    });
+
+}
+
+
+/* OTOMATIS LANJUT KE LAGU BERIKUTNYA */
+
+if (audio) {
+
+    audio.addEventListener("ended", () => {
+
+        currentSong =
+            (currentSong + 1) % playlist.length;
+
+        loadSong(currentSong, true);
+
+    });
+
+}
+
+
+/* LOAD LAGU PERTAMA */
+
+loadSong(0);
 
 
     /*
