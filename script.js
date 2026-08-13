@@ -6,7 +6,7 @@ const members = [
 
     {
         name: "ZERO",
-        role: "Group Admin",
+        role: "ANOMALI",
         note: "𝕷𝖆 𝕱𝖆𝖒𝖎𝖑𝖎𝖆"
     },
 
@@ -18,14 +18,14 @@ const members = [
 
     {
         name: "Naufal",
-        role: "Group Admin",
-        note: "6007917126"
+        role: "Group Founder",
+        note: "Ga Pelit Hotspot"
     },
 
     {
         name: "Raka",
         role: "Group Admin",
-        note: "Umbi cilembu"
+        note: "Umbi cilembu + Es Lumut"
     },
 
     {
@@ -36,26 +36,26 @@ const members = [
 
     {
         name: "Davlin",
-        role: "Group Admin",
-        note: "Ada"
+        role: "Group Founder",
+        note: "Ada - Ada Saja"
     },
 
     {
         name: "Ilyas",
-        role: "Group Admin",
+        role: "Group Founder",
         note: "."
     },
 
     {
         name: "Rafa",
         role: "Group Admin",
-        note: "Latihan pinalti dulu"
+        note: "Latihan Pinalti Dulu"
     },
 
     {
         name: "Bustan",
         role: "Member",
-        note: "Ada"
+        note: "Banyak tingkah"
     },
 
     {
